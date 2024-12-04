@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFModelsReferncesApp
+namespace EFLinqApp
 {
     public class EmployeesAppContext : DbContext
     {
