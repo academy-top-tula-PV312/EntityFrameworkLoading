@@ -16,6 +16,11 @@ namespace EFLinqApp
         public DbSet<Company> Companies { get; set; }
         public DbSet<Project> Projects { get; set; }
 
+        public EmployeesAppContext()
+        {
+            //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // One to Many
@@ -61,6 +66,12 @@ namespace EFLinqApp
             //modelBuilder.Entity<Project>()
             //            .HasMany(p => p.Employees)
             //            .WithMany(e => e.Projects);
+
+
+            modelBuilder.Entity<Country>()
+                        .HasQueryFilter(cn => cn.Id == 1);
+            modelBuilder.Entity<Employee>()
+                        .HasQueryFilter(e => e.Company!.Country!.Id == 1);
                         
         }
 
