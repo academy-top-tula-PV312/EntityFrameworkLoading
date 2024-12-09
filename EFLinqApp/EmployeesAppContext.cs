@@ -16,6 +16,11 @@ namespace EFLinqApp
         public DbSet<Company> Companies { get; set; }
         public DbSet<Project> Projects { get; set; }
 
+        public IQueryable<Employee> EmployeesByAge(int age)
+        {
+            return FromExpression(() => EmployeesByAge(age));
+        }
+
         public EmployeesAppContext()
         {
             //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
@@ -72,6 +77,8 @@ namespace EFLinqApp
             //            .HasQueryFilter(cn => cn.Id == 1);
             //modelBuilder.Entity<Employee>()
             //            .HasQueryFilter(e => e.Company!.Country!.Id == 1);
+
+            modelBuilder.HasDbFunction(() => EmployeesByAge(default));
                         
         }
 
