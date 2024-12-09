@@ -12,8 +12,10 @@ using (EmployeesAppContext context = new())
 
     //context.Employees.ExecuteDelete();
 
-    string sqlQuery = "SELECT * FROM Employees WHERE PositionId = 1";
-    var managers = context.Employees.FromSqlRaw(sqlQuery);
+    string sqlQuery = "SELECT * FROM Employees";
+    var managers = context.Employees
+                          .FromSqlRaw(sqlQuery)
+                          .OrderBy(x => x.Name);
 
     foreach(var m in managers)
         Console.WriteLine($"{m.Name}");

@@ -68,10 +68,10 @@ namespace EFLinqApp
             //            .WithMany(e => e.Projects);
 
 
-            modelBuilder.Entity<Country>()
-                        .HasQueryFilter(cn => cn.Id == 1);
-            modelBuilder.Entity<Employee>()
-                        .HasQueryFilter(e => e.Company!.Country!.Id == 1);
+            //modelBuilder.Entity<Country>()
+            //            .HasQueryFilter(cn => cn.Id == 1);
+            //modelBuilder.Entity<Employee>()
+            //            .HasQueryFilter(e => e.Company!.Country!.Id == 1);
                         
         }
 
